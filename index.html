@@ -1,0 +1,48 @@
+<!doctype html>
+
+<!-- 
+The app is composed of 3 modules:
+- datagrid: contains all the data (paginated)
+- menu: contains all the navigation links
+- tools: contains links such as 'FAQ' and the search toolbar
+ -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TR test</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.js"></script>
+  
+  <!-- modules -->
+  <script src="/ng-modules/datagrid/datagrid.js"></script>
+  <script src="/ng-modules/menu/menu.js"></script>
+  <script src="/ng-modules/tools/tools.js"></script>
+
+</head>
+<body>
+	<div class='main-container' >
+		<div class='header'>DataGrid Control Panel</div>
+		<div class='border'>
+			<div class='content'>
+				<div class='top'>
+					<h1 class='left'>Data <span>Grid<span></h1>
+					<div id='tools' ng-app="tools" ng-include src="'/ng-modules/tools/tools.html'" class='right links-top'></div>
+					<div class='separator' ></div>
+				</div>
+	
+				<div id="menu" ng-app="menu" ng-include src="'/ng-modules/menu/menu.html'" ></div>
+				<div id="datagrid" ng-app="datagrid" ng-include src="'/ng-modules/datagrid/datagrid.html'" ></div>
+			</div>
+		</div>	
+	</div>
+	
+  <!-- instanciating modules manually -->	  
+  <script type="text/javascript">	
+ 	angular.bootstrap(document.getElementById("tools"), ['tools']);
+  	angular.bootstrap(document.getElementById("menu"), ['menu']);
+  	angular.bootstrap(document.getElementById("datagrid"), ['datagrid']);
+  </script>
+	
+</body>
+</html>

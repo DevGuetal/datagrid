@@ -1,0 +1,44 @@
+<div class='data' ng-controller="datagridController">
+	<table>
+		<thead>
+			<tr>
+				<th class="ticker" custom-sort order="'ticker'" sort="sort">Ticker</th>
+				<th class="industry" custom-sort order="'industry'" sort="sort">Industry</th>
+				<th class="marketcap" custom-sort order="'marketcap'" sort="sort">Market Cap</th>
+				<th class="price" custom-sort order="'price'" sort="sort">Price</th>
+				<th class="change" custom-sort order="'change'" sort="sort">Change</th>
+				<th class="volume" custom-sort order="'volume'" sort="sort">Volume</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr ng-repeat="item in model.pagedItems[currentPage] | orderBy:sort.mySortFunction:sort.reverse">
+                 <td>{{item.ticker}}</td>
+                 <td>{{item.industry}}</td>
+                 <td>{{item.marketcap}}</td>
+                 <td>{{item.price}}</td>
+                 <td>{{item.change}}</td>
+                 <td>{{item.volume}}</td>
+             </tr>
+		<tbody>
+		<tfoot>
+			<tr class="links-bottom">
+			    <td colspan="6" class="links-bottom">
+			        
+		            <ul>
+		                <li class="left" ng-class="{disabled: currentPage == 0}">
+		                    <a href ng-click="prevPage()">« Prev</a>
+		                </li>
+		             
+		                <li class="right"  ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+		                    <a href ng-click="nextPage()">Next »</a>
+		                </li>
+		            </ul>
+			        
+			    </td>
+		    </tr>
+		</tfoot>
+	</table>
+	
+	<div class="loading-spiner-holder" ng-show="loadingShow" ><div class="spinner"></div></div>
+</div>
